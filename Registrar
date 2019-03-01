@@ -1,0 +1,40 @@
+const Discord = require('discord.js')
+
+exports.run = (client, message, args) => {
+    
+   message.delete()
+   
+    const Discord = require('discord.js');
+    const embed = new Discord.RichEmbed()
+
+    .setColor('#11ABDD')
+    .setTitle("**Registro dos canais!**")
+    .setDescription("Para se registrar nos canais do GAY clique nessa reação: ✅\nPara se registrar nos canais do LGBT clique nessa reação: ❌")
+    .setFooter("Bot desenvolvido por LeoziN#0971", client.user.avatarURL);
+    
+    message.channel.send(embed).then(msg => {msg.delete(9000)
+    msg.react('✅').then(r=>{
+    msg.react('❌').then(r2=>{
+    })
+    })
+
+    const sure = (reaction, user) => reaction.emoji.name === `✅` && user.id === message.author.id;
+    const r1 = msg.createReactionCollector(sure, {time: 60000 });
+    r1.on('collect', r => {
+        r.remove(message.author.id);
+        message.member.addRole('GAY')
+    })
+
+    const sure2 = (reaction, user) => reaction.emoji.name === `❌` && user.id === message.author.id;
+    const r2 = msg.createReactionCollector(sure2, {time: 60000 });
+    r2.on('collect', r2 => {
+        r.remove(message.author.id);
+        message.member.addRole('LGBT')
+    })
+
+    });
+    
+    }
+module.exports.help = {
+    name: "ontime"
+}
