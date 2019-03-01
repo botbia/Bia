@@ -1,0 +1,17 @@
+var discord = require("discord.js")
+
+exports.run = (client,message,args)=>{
+var embed = new discord.RichEmbed()
+.setAuthor(message.author.username)
+.setColor("RANDOM")
+.setThumbnail("https://imgur.com/a/63ySgbg")
+.addField(":busts_in_silhouette: Usuarios ", message.guild.memberCount, false)
+.addField("Duvidas?", "Use B!comandos, ou B!sugestao!", false)
+.addField(":shield: Servidores ", client.guilds.size, true)
+.addField(":pen_ballpoint: Servidor ", message.guild.name, true)
+.addBlankField()
+.addField(":fire: Memoria", "20.33 mb", true)
+.addField(":desktop: Livraria", "JavaScript", true)
+
+message.channel.send(embed)
+}
